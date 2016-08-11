@@ -30,11 +30,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.hide();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Fragment fragment = new AddChargeFragment();
+                trans(fragment);
             }
         });
 
@@ -84,17 +87,20 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         Fragment fragment = null;
         int id = item.getItemId();
 
         if (id == R.id.nav_charges) {
             fragment = new ChargesFragment();
             title = "Charges";
+            fab.show();
             trans(fragment);
 
         } else if (id == R.id.nav_charges_dictionary) {
             fragment = new ChargesDictionaryFragment();
             title = "Charges dictionary";
+            fab.show();
             trans(fragment);
 
         } else if (id == R.id.nav_logout) {
@@ -104,8 +110,12 @@ public class MainActivity extends AppCompatActivity
             finish(); //вызывается логин активити и удалает весь бекстек
 
         } else if (id == R.id.nav_help) {
+            fragment = new AddChargeFragment();
+            trans(fragment);
 
         }
+
+
 
         if (fragment != null) {
             getSupportActionBar().setTitle(title);
