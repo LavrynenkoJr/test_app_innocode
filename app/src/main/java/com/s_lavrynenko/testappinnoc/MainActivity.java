@@ -20,6 +20,8 @@ import android.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    String title = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,10 +89,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_charges) {
             fragment = new ChargesFragment();
+            title = "Charges";
             trans(fragment);
 
         } else if (id == R.id.nav_charges_dictionary) {
             fragment = new ChargesDictionaryFragment();
+            title = "Charges dictionary";
             trans(fragment);
 
         } else if (id == R.id.nav_logout) {
@@ -103,6 +107,11 @@ public class MainActivity extends AppCompatActivity
 
         }
 
+        if (fragment != null) {
+            getSupportActionBar().setTitle(title);
+            // change icon to arrow drawable
+            //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow);
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
