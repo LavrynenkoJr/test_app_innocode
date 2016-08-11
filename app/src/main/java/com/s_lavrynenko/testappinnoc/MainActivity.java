@@ -81,12 +81,14 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         Fragment fragment = null;
         int id = item.getItemId();
 
         if (id == R.id.nav_charges) {
-            // Handle the camera action
+            fragment = new ChargesFragment();
+            trans(fragment);
+
         } else if (id == R.id.nav_charges_dictionary) {
             fragment = new ChargesDictionaryFragment();
             trans(fragment);

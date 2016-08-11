@@ -35,6 +35,7 @@
         completions."
     </string>
     <string name="title_activity_log">Sign in</string>
+    <string name="element_text">Element</string>
 
 
 </resources>
