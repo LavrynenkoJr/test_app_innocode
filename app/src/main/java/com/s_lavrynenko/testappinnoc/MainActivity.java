@@ -18,9 +18,10 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,FloatBut {
 
     String title = "";
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +30,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.hide();
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Fragment fragment = new AddChargeFragment();
-                trans(fragment);
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,20 +80,20 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         Fragment fragment = null;
         int id = item.getItemId();
 
         if (id == R.id.nav_charges) {
             fragment = new ChargesFragment();
             title = "Charges";
-            fab.show();
+            //fab.show();
             trans(fragment);
 
         } else if (id == R.id.nav_charges_dictionary) {
             fragment = new ChargesDictionaryFragment();
             title = "Charges dictionary";
-            fab.show();
+            //fab.show();
             trans(fragment);
 
         } else if (id == R.id.nav_logout) {
@@ -132,5 +125,40 @@ public class MainActivity extends AppCompatActivity
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+    }
+
+
+    @Override
+    public void showButt() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                Fragment fragment = new AddChargeFragment();
+                trans(fragment);
+            }
+        });
+        fab.show();
+    }
+
+    @Override
+    public void showButt2() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                Fragment fragment = new AddChargeDictionaryFragment();
+                trans(fragment);
+            }
+        });
+        fab.show();
+
+    }
+
+    @Override
+    public void hideButt() {
+        fab.hide();
     }
 }

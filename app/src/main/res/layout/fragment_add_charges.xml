@@ -22,7 +22,8 @@
         android:singleLine="true"
         android:layout_marginBottom="100dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="60dp"
+        android:focusableInTouchMode="true"/>
 
     <Button
         android:layout_width="wrap_content"
